@@ -5,6 +5,9 @@ const corona2 = preload("res://CORONGA2.tscn")
 
 var points = 0
 
+func _ready():
+	randomize()
+
 func _on_Timer_timeout():
 	var new_corona
 	if randi() % 10 == 1:
@@ -17,11 +20,11 @@ func _on_Timer_timeout():
 	new_corona.global_position.y = randi() % 600
 	
 	if self.get_children().size() == 29:
-		$Label3.visible = true
+		$YouLose.visible = true
 		$Timer.stop()
 	else:
 		$Timer.start($Timer.wait_time * 0.99)
 
 func on_Coronga_Kill(new_points):
 	points += new_points
-	$Label2.set_text(str(points))
+	$NumPontos.set_text(str(points))
